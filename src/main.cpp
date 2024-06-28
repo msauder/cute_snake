@@ -7,7 +7,7 @@ using namespace Cute;
 
 void mount_content_folder()
 {
-	char* path = spnorm(fs_get_base_dir());
+	char* path = spnorm(fs_get_base_directory());
 	int n = 1;
 #ifdef _MSC_VER
 	n = 2;

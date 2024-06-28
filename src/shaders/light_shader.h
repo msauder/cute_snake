@@ -464,25 +464,6 @@ static inline const sg_shader_desc* light_shd_shader_desc(sg_backend backend) {
     }
     return &desc;
   }
-  if (backend == SG_BACKEND_GLES2) {
-    static sg_shader_desc desc;
-    static bool valid;
-    if (!valid) {
-      valid = true;
-      desc.attrs[0].name = "in_pos";
-      desc.vs.source = light_vs_source_glsl100;
-      desc.vs.entry = "main";
-      desc.fs.source = light_fs_source_glsl100;
-      desc.fs.entry = "main";
-      desc.fs.uniform_blocks[0].size = 16;
-      desc.fs.uniform_blocks[0].layout = SG_UNIFORMLAYOUT_STD140;
-      desc.fs.uniform_blocks[0].uniforms[0].name = "fs_params";
-      desc.fs.uniform_blocks[0].uniforms[0].type = SG_UNIFORMTYPE_FLOAT4;
-      desc.fs.uniform_blocks[0].uniforms[0].array_count = 1;
-      desc.label = "light_shd_shader";
-    }
-    return &desc;
-  }
   if (backend == SG_BACKEND_GLES3) {
     static sg_shader_desc desc;
     static bool valid;
